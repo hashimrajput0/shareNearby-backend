@@ -7,9 +7,13 @@ import cors from "cors"
 connectDB()
 
 
+
 app.use(cors({
   origin: "https://sharenearby.vercel.app"
 }))
+
+app.set("trust proxy", 1);
+
 
 app.use(express.json())
 app.use("/api/public", publicRoutes)
