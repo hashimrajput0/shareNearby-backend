@@ -5,8 +5,14 @@ async function getPublicData(req, res) {
 
     try {
 
-        const ip = req.ip
+const forwardedFor = req.headers["x-forwarded-for"];
 
+        const ip = forwardedFor
+            ? forwardedFor.split(",")[0].trim()
+            : req.ip;
+
+        console.log("CLIENT IP:", ip);
+        
         if(!ip) {
             return res.status(400).json({
                 message : "We are unable to access your IP"
@@ -41,8 +47,15 @@ async function createPublicData(req, res) {
 
 try {
 
-        const ip = req.ip
-        const { text } = req.body
+const forwardedFor = req.headers["x-forwarded-for"];
+
+        const ip = forwardedFor
+            ? forwardedFor.split(",")[0].trim()
+            : req.ip;
+
+        console.log("CLIENT IP:", ip);
+    
+    const { text } = req.body
 
         if(!ip) {
             return res.status(400).json({
