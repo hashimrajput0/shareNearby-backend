@@ -12,6 +12,11 @@ const forwardedFor = req.headers["x-forwarded-for"];
             : req.ip;
 
         console.log("CLIENT IP:", ip);
+
+
+        console.log("req.ip:", req.ip);
+console.log("x-forwarded-for:", req.headers["x-forwarded-for"]);
+console.log("cf-connecting-ip:", req.headers["cf-connecting-ip"]);
         
         if(!ip) {
             return res.status(400).json({
