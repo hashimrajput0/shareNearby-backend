@@ -8,7 +8,7 @@ connectDB()
 
 
 app.use(cors({
-  origin: "https://sharenearby.vercel.app/"
+  origin: "https://sharenearby.vercel.app"
 }))
 
 app.use(express.json())
